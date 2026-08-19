@@ -6,6 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://dkmipvd7j8own" path="res://Extra/font_48.tres" id="4_0js1b"]
 [ext_resource type="Texture2D" uid="uid://dy8e3xkc5qdbp" path="res://Sprites/Interface/Tilemap/tilemap_packed.png" id="5_iug37"]
 [ext_resource type="LabelSettings" uid="uid://pkbbbgyce87" path="res://Extra/font_16.tres" id="6_6gvf8"]
+[ext_resource type="AudioStream" uid="uid://dtxhputnlac6" path="res://Sounds/select-a.ogg" id="7_iug37"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfe6c"]
 shader = ExtResource("2_baxwh")
@@ -229,14 +230,15 @@ texture_normal = SubResource("AtlasTexture_itnin")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SettingsButtons/VBoxContainer/Music/MusicButton" unique_id=1574719045]
+[node name="MusicLabel" type="Label" parent="SettingsButtons/VBoxContainer/Music/MusicButton" unique_id=1574719045]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Music"
+text = "Music: ON"
 label_settings = ExtResource("6_6gvf8")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -264,14 +266,15 @@ texture_normal = SubResource("AtlasTexture_itnin")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SettingsButtons/VBoxContainer/SFX/SFXButton" unique_id=851175460]
+[node name="SFXLabel" type="Label" parent="SettingsButtons/VBoxContainer/SFX/SFXButton" unique_id=851175460]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "SFX"
+text = "SFX: ON"
 label_settings = ExtResource("6_6gvf8")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -299,7 +302,8 @@ texture_normal = SubResource("AtlasTexture_itnin")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SettingsButtons/VBoxContainer/Window/WindowButton" unique_id=1306253525]
+[node name="WindowLabel" type="Label" parent="SettingsButtons/VBoxContainer/Window/WindowButton" unique_id=1306253525]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -334,7 +338,8 @@ texture_normal = SubResource("AtlasTexture_itnin")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SettingsButtons/VBoxContainer/Back/BackButton" unique_id=214909206]
+[node name="BackLabel" type="Label" parent="SettingsButtons/VBoxContainer/Back/BackButton" unique_id=214909206]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -346,6 +351,10 @@ label_settings = ExtResource("6_6gvf8")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_trim_flags = 128
+
+[node name="UISound" type="AudioStreamPlayer" parent="." unique_id=1784597953]
+stream = ExtResource("7_iug37")
+bus = &"SFX"
 
 [connection signal="pressed" from="MainButtons/VBoxContainer/Play/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Settings/SettingsButton" to="." method="_on_settings_button_pressed"]
