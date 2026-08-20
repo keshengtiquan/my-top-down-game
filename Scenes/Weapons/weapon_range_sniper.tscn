@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ktirn1vydynj"]
+
+[ext_resource type="PackedScene" uid="uid://d2b0asc4k262e" path="res://Scenes/Weapons/weapon_range_base.tscn" id="1_5v6bh"]
+[ext_resource type="Texture2D" uid="uid://b3162fce4jytf" path="res://Sprites/Weapons/Tiles/tile_0003.png" id="2_o6ifo"]
+[ext_resource type="Resource" uid="uid://wxqioohdb16p" path="res://Data/Weapons/weapon_sniper.tres" id="2_oh1ol"]
+
+[node name="WeaponRangeSniper" unique_id=1294099760 instance=ExtResource("1_5v6bh")]
+data = ExtResource("2_oh1ol")
+
+[node name="Sprite2D" parent="Pivot" parent_id_path=PackedInt32Array(1535700958) index="0" unique_id=317231444]
+position = Vector2(12, 0)
+texture = ExtResource("2_o6ifo")
+
+[node name="Marker2D" parent="Pivot" parent_id_path=PackedInt32Array(1535700958) index="1" unique_id=1007367940]
+position = Vector2(26.666668, 0)

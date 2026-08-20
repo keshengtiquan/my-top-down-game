@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d05drxv7bv61v"]
+
+[ext_resource type="PackedScene" uid="uid://d2b0asc4k262e" path="res://Scenes/Weapons/weapon_range_base.tscn" id="1_0swso"]
+[ext_resource type="Resource" uid="uid://bp0dvfxatit8k" path="res://Data/Weapons/weapon_mac10.tres" id="2_g3q7x"]
+[ext_resource type="Texture2D" uid="uid://cgch73n7h4u3r" path="res://Sprites/Weapons/Tiles/tile_0006.png" id="2_mki1t"]
+
+[node name="WeaponRangeMac10" unique_id=1294099760 instance=ExtResource("1_0swso")]
+data = ExtResource("2_g3q7x")
+
+[node name="Sprite2D" parent="Pivot" parent_id_path=PackedInt32Array(1535700958) index="0" unique_id=317231444]
+position = Vector2(12, 0)
+texture = ExtResource("2_mki1t")
+
+[node name="Marker2D" parent="Pivot" parent_id_path=PackedInt32Array(1535700958) index="1" unique_id=1007367940]
+position = Vector2(25.333334, -0.6666667)

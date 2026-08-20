@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://cfll2g1s17ifh"]
+
+[ext_resource type="Texture2D" uid="uid://bpa7uv0kkmria" path="res://Sprites/Weapons/Tiles/tile_0005.png" id="1_kvlyx"]
+[ext_resource type="Script" uid="uid://dq8305xtxjt73" path="res://Data/Weapons/weapon_data.gd" id="2_qoq3b"]
+
+[resource]
+script = ExtResource("2_qoq3b")
+icon = ExtResource("1_kvlyx")
+weapon_name = "Mp5"
+damage = 1.0
+cooldown = 0.4
+mana_cost = 1.0
+spread = 7.0
+bullet_speed = 250.0
+metadata/_custom_type_script = "uid://dq8305xtxjt73"

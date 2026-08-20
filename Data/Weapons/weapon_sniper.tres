@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://wxqioohdb16p"]
+
+[ext_resource type="Texture2D" uid="uid://b3162fce4jytf" path="res://Sprites/Weapons/Tiles/tile_0003.png" id="1_2yrms"]
+[ext_resource type="Script" uid="uid://dq8305xtxjt73" path="res://Data/Weapons/weapon_data.gd" id="2_0t7cw"]
+
+[resource]
+script = ExtResource("2_0t7cw")
+icon = ExtResource("1_2yrms")
+weapon_name = "Sniper"
+damage = 1.0
+cooldown = 0.4
+mana_cost = 1.0
+spread = 7.0
+bullet_speed = 250.0
+metadata/_custom_type_script = "uid://dq8305xtxjt73"
