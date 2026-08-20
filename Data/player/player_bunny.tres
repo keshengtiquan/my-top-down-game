@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://ctmo8j1fugt0f"]
+
+[ext_resource type="Texture2D" uid="uid://d3u1rr67e3yg" path="res://Sprites/Players/tile_0012.png" id="1_7mjv1"]
+[ext_resource type="Script" uid="uid://usdod6vvdd36" path="res://Data/player/play_data.gd" id="2_yiuen"]
+
+[resource]
+script = ExtResource("2_yiuen")
+icon = ExtResource("1_7mjv1")
+id = "Bunny"
+metadata/_custom_type_script = "uid://usdod6vvdd36"

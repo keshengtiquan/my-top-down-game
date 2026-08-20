@@ -354,7 +354,6 @@ autowrap_trim_flags = 128
 
 [node name="UISound" type="AudioStreamPlayer" parent="." unique_id=1784597953]
 stream = ExtResource("7_iug37")
-bus = &"SFX"
 
 [connection signal="pressed" from="MainButtons/VBoxContainer/Play/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Settings/SettingsButton" to="." method="_on_settings_button_pressed"]

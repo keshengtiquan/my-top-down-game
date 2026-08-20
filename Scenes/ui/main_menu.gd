@@ -12,6 +12,7 @@ class_name MainMenu
 
 func _ready() -> void:
 	Global.load_data()
+	print(Global.settings)
 	update_audio_bus('Music', music_label, Global.settings.music)
 	update_audio_bus('SFX', sfx_label, Global.settings.sfx)
 	update_fullscreen(Global.settings.fullscreen)

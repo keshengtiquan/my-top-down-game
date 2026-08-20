@@ -1,0 +1,14 @@
+extends Resource
+
+class_name WeaponData
+
+@export var icon: Texture2D
+@export var weapon_name: String
+@export var scene: PackedScene
+@export var damage: float
+@export var cooldown: float
+@export var mana_cost: float
+@export var spread: float
+@export var bullet_speed: float
+@export var bullet_scene: PackedScene
+@export_multiline() var description: String

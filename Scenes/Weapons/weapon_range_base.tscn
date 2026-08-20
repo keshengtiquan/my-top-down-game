@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d2b0asc4k262e"]
+
+[ext_resource type="AudioStream" uid="uid://kxjapaxp4le4" path="res://Sounds/shoot-c.ogg" id="1_5xsn3"]
+[ext_resource type="Script" uid="uid://jy87c3q0rg6g" path="res://Scenes/Weapons/weapon_range.gd" id="1_vq8bb"]
+
+[node name="WeaponRangeBase" type="Node2D" unique_id=1294099760]
+script = ExtResource("1_vq8bb")
+
+[node name="Pivot" type="Node2D" parent="." unique_id=1535700958]
+scale = Vector2(1.5, 1.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=317231444]
+unique_name_in_owner = true
+
+[node name="Marker2D" type="Marker2D" parent="Pivot" unique_id=1007367940]
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=542816587]
+stream = ExtResource("1_5xsn3")
+bus = &"SFX"

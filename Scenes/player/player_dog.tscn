@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bw4jywptniu8h"]
+
+[ext_resource type="PackedScene" uid="uid://cl60rxsrxlf6c" path="res://Scenes/player/player_base.tscn" id="1_8dx8f"]
+[ext_resource type="Texture2D" uid="uid://cnttucjccgouq" path="res://Sprites/Players/tile_0003.png" id="2_7bmj4"]
+[ext_resource type="Resource" uid="uid://ylyihdne1tat" path="res://Data/player/player_dog.tres" id="2_psrm5"]
+[ext_resource type="Texture2D" uid="uid://ccab6or5n1nai" path="res://Sprites/Players/tile_0000.png" id="3_bev03"]
+[ext_resource type="Texture2D" uid="uid://cemiyrcpjly84" path="res://Sprites/Players/tile_0001.png" id="4_psrm5"]
+[ext_resource type="Texture2D" uid="uid://cyey76bu4l4v5" path="res://Sprites/Players/tile_0002.png" id="5_byh7e"]
+[ext_resource type="PackedScene" uid="uid://d1l2oaro5petc" path="res://Scenes/Weapons/weapon_range_pistol.tscn" id="7_psrm5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nl3y0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7bmj4")
+}],
+"loop": 0,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bev03")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_psrm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_byh7e")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_psrm5"]
+radius = 8.0
+
+[node name="PlayerDog" unique_id=270589837 instance=ExtResource("1_8dx8f")]
+data = ExtResource("2_psrm5")
+
+[node name="Visuals" parent="." index="0" unique_id=144246048]
+scale = Vector2(1.25, 1.25)
+
+[node name="AnimatedSprite2D" parent="Visuals" index="1" unique_id=347292982]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_nl3y0")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=659625784]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_psrm5")
+
+[node name="WeaponRangePistol" parent="WeaponController" parent_id_path=PackedInt32Array(448688327) index="0" unique_id=1294099760 instance=ExtResource("7_psrm5")]
+position = Vector2(0, -9)
