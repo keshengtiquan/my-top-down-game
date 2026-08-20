@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyTopDownGame 项目思维导图</title>
+<style>
+  :root {
+    --bg: #f5f0e8;
+    --root-bg: #2d3a4b;
+    --line: #b8a88f;
+    --text: #333;
+    --muted: #8a8070;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  header h1 { font-size: 26px; color: var(--root-bg); }
+  header p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .legend {
+    text-align: center;
+    margin: 8px 0 20px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .legend span {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 2px 10px;
+    border-radius: 10px;
+    color: #fff;
+  }
+
+  /* ---------- 思维导图（横向树） ---------- */
+  .mindmap {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 20px 10px 40px;
+    min-height: 500px;
+  }
+  .root {
+    background: var(--root-bg);
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 16px 22px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    align-self: center;
+    white-space: nowrap;
+  }
+  .branch {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 40px;
+  }
+  /* 横向连接线 */
+  .branch::before {
+    content: "";
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    width: 40px;
+    height: 2px;
+    background: var(--line);
+  }
+  .branch-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    position: relative;
+    padding-left: 18px;
+  }
+  /* 纵向连接线 */
+  .branch-col::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--line);
+  }
+  .branch-col > .node-item:first-child::before {
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    width: 18px;
+    height: 2px;
+    background: var(--line);
+  }
+
+  .node-item {
+    position: relative;
+  }
+  .node {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    border: 2px solid var(--c, #7a9e7e);
+    border-left: 8px solid var(--c, #7a9e7e);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: transform .12s;
+  }
+  .node:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,.14); }
+  .node .t { font-weight: 600; }
+  .node .d { color: var(--muted); font-size: 12px; margin-left: 8px; font-weight: normal; }
+  .node .arrow { margin-left: 8px; font-size: 10px; color: var(--muted); }
+  .node.leaf { cursor: default; }
+  .node.leaf:hover { transform: none; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+
+  /* 颜色主题（按模块） */
+  .c-config { --c: #8e6f9e; }
+  .c-autoload { --c: #4a8fb8; }
+  .c-data { --c: #d98e48; }
+  .c-scene { --c: #7a9e7e; }
+  .c-shader { --c: #b0607a; }
+  .c-assets { --c: #8a8a5a; }
+  .c-flow { --c: #5a8a8a; }
+  .c-pattern { --c: #a8763e; }
+
+  .hidden { display: none !important; }
+  .hint {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 12px;
+  }
+  footer {
+    text-align: center;
+    margin-top: 30px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🧭 MyTopDownGame — 项目思维导图</h1>
+  <p>Godot 4.7 · 俯视角射击 · 640×360 视口 → 1920×1080 · Mobile 渲染 + Jolt 物理 &nbsp;|&nbsp; 点击有 ▶ 的节点可折叠/展开</p>
+</header>
+<div class="legend">
+  <span class="c-config" style="background:#8e6f9e">工程配置</span>
+  <span class="c-autoload" style="background:#4a8fb8">全局单例</span>
+  <span class="c-data" style="background:#d98e48">数据层</span>
+  <span class="c-scene" style="background:#7a9e7e">场景层</span>
+  <span class="c-shader" style="background:#b0607a">着色器</span>
+  <span class="c-assets" style="background:#8a8a5a">资源</span>
+  <span class="c-flow" style="background:#5a8a8a">流程</span>
+  <span class="c-pattern" style="background:#a8763e">模式小结</span>
+</div>
+
+<div class="mindmap" id="mm"></div>
+<p class="hint">💡 提示：此 HTML 完全离线可用，可折叠浏览；另附 <code>docs/项目思维导图.md</code> 可导入任意思维导图工具。</p>
+<footer>生成于项目代码阅读 · 全局单例 4 个 · 场景 8 个 · 数据资源 5 个</footer>
+
+<script>
+// ---------------- 数据模型 ----------------
+const TREE = {
+  label: "MyTopDownGame",
+  detail: "Godot 4.7 俯视角射击游戏",
+  cls: "",
+  children: [
+    {
+      label: "🖥 工程配置",
+      cls: "c-config",
+      children: [
+        { label: "主场景", detail: "MainMenu (uid://ctq8h0cdparas)" },
+        { label: "渲染", detail: "Mobile 渲染器 + D3D12 + 像素风过滤" },
+        { label: "物理", detail: "Jolt Physics" },
+        { label: "窗口", detail: "640×360 视口 · stretch=canvas_items · expand" },
+        { label: "输入映射", detail: "WASD → move_up/down/left/right" },
+        { label: "音频总线", detail: "Master / Music / SFX" }
+      ]
+    },
+    {
+      label: "🔧 全局单例 Autoloads",
+      cls: "c-autoload",
+      children: [
+        { label: "Global", detail: "设置存档 music/sfx/fullscreen → user://save.json" },
+        { label: "EventBus", detail: "事件总线：on_player_health_update(current,max)", leaf: false, children: [
+          { label: "用途", detail: "玩家受伤 → Arena 血条刷新（跨场景解耦）" }
+        ]},
+        { label: "Transition", detail: "钻石像素 shader 渐变 → change_scene_to_file()" },
+        { label: "Music", detail: "BGM 播放器 · Music 总线 · 自动播放" }
+      ]
+    },
+    {
+      label: "📦 数据层 Data/",
+      cls: "c-data",
+      children: [
+        { label: "PlayerData", detail: "icon/id/max_hp/move_speed/magic (play_data.gd)", children: [
+          { label: "player_bunny.tres", detail: "兔子 · 默认值 (HP5, 速度200)" },
+          { label: "player_cat.tres", detail: "猫 · HP15, 速度250" },
+          { label: "player_dog.tres", detail: "狗 · HP8, 速度230 ★竞技场在用" },
+          { label: "player_mouse.tres", detail: "鼠 · HP10, 速度220" }
+        ]},
+        { label: "WeaponData", detail: "damage/cooldown/mana_cost/spread/bullet_speed/... (weapon_data.gd)", children: [
+          { label: "weapon_pistol.tres", detail: "手枪：伤害1 · 冷却0.4s · 耗蓝1 · 扩散7° · 弹速250" }
+        ]}
+      ]
+    },
+    {
+      label: "🎬 场景层 Scenes/",
+      cls: "c-scene",
+      children: [
+        { label: "ui/main_menu", detail: "主菜单 + 设置面板（PLAY/SETTINGS/QUIT）", children: [
+          { label: "设置项", detail: "音乐 · SFX · 全屏 开关，tween 滑入动画" },
+          { label: "PLAY", detail: "Transition → character_selection.tscn" },
+          { label: "QUIT", detail: "Global.save_data() 后退出" }
+        ]},
+        { label: "character_selection", detail: "角色选择 ⚠️ 空场景，待开发" },
+        { label: "Arena/arena", detail: "竞技场：UI 血条/蓝条 + 实例化 player_dog", children: [
+          { label: "血条刷新", detail: "监听 EventBus.on_player_health_update" }
+        ]},
+        { label: "player/", detail: "玩家体系", children: [
+          { label: "player_base.tscn", detail: "骨架：Visuals/Shadow/AnimatedSprite2D/Collision/Camera2D/HealthComponent/WeaponController" },
+          { label: "player.gd", detail: "CharacterBody2D：WASD移动 · idle/move动画 · 朝向翻转(scale.x)" },
+          { label: "player_狗猫兔鼠.tscn", detail: "4 个角色变体：继承 base + 各自 SpriteFrames/碰撞/数据" },
+          { label: "weapon_controller.gd", detail: "每帧 pivot.look_at(鼠标位置)" }
+        ]},
+        { label: "Components/health_component", detail: "可复用生命组件", children: [
+          { label: "API", detail: "initHealth / take_damage / heal / die" },
+          { label: "信号", detail: "on_unit_damaged / on_unit_healed / on_unit_dead" }
+        ]},
+        { label: "Weapons/", detail: "武器体系", children: [
+          { label: "weapon.gd (Weapon)", detail: "基类：pivot + use_weapon()（未实现）" },
+          { label: "weapon_range.gd (WeaponRange)", detail: "远程武器：sprite 朝向鼠标 flip_v" },
+          { label: "weapon_range_base.tscn", detail: "Pivot/Sprite2D/Marker2D(枪口)/ShootSound" },
+          { label: "weapon_range_pistol.tscn", detail: "手枪实例（Sprite+Marker 已配，开火待写）" }
+        ]}
+      ]
+    },
+    {
+      label: "🎨 着色器 Shaders/",
+      cls: "c-shader",
+      children: [
+        { label: "background.gdshader", detail: "背景 UV 滚动动画 (speed)" },
+        { label: "transition.gdshader", detail: "钻石像素过渡 (progress 0→1)" }
+      ]
+    },
+    {
+      label: "📁 资源 Assets",
+      cls: "c-assets",
+      children: [
+        { label: "Sprites/", detail: "玩家/敌人/武器/物品(Item_White1-18)/UI 图集" },
+        { label: "Sounds/", detail: "BGM(mp3) + 数十个 OGG：shoot/hurt/coin/jump/explode/select" },
+        { label: "Font/", detail: "Comicoro.ttf · Lilian.ttf · font_game.png" },
+        { label: "Extra/", detail: "font_16.tres / font_48.tres 字体预设" }
+      ]
+    },
+    {
+      label: "🔄 游戏流程",
+      cls: "c-flow",
+      children: [
+        { label: "MainMenu", detail: "—PLAY→", children: [
+          { label: "CharacterSelection", detail: "—选择→ (待开发)", children: [
+            { label: "Arena", detail: "战斗场景" }
+          ]}
+        ]},
+        { label: "数据流", detail: "PlayerData → player.tscn → Player → HealthComponent → EventBus → UI 血条" },
+        { label: "待办", detail: "角色选择 · 开火 use_weapon · 子弹/敌人 · 蓝条逻辑" }
+      ]
+    },
+    {
+      label: "🧩 架构模式",
+      cls: "c-pattern",
+      children: [
+        { label: "数据驱动", detail: "Resource(.tres) 定义属性，场景引用" },
+        { label: "组件化", detail: "HealthComponent 独立复用 + 信号解耦" },
+        { label: "继承", detail: "Weapon←WeaponRange · PlayerBase←4角色" },
+        { label: "事件总线", detail: "EventBus 跨场景通信" },
+        { label: "全局单例", detail: "设置/过渡/音乐常驻全局可达" }
+      ]
+    }
+  ]
+};
+
+// ---------------- 渲染 ----------------
+const mm = document.getElementById("mm");
+
+function renderNode(node, depth) {
+  const hasKids = node.children && node.children.length > 0;
+  const item = document.createElement("div");
+  item.className = "node-item";
+
+  const box = document.createElement("div");
+  box.className = "node " + (node.cls || "") + (hasKids ? "" : " leaf");
+  box.innerHTML =
+    `<span class="t">${node.label}</span>` +
+    (node.detail ? `<span class="d">${node.detail}</span>` : "") +
+    (hasKids ? `<span class="arrow">▼</span>` : "");
+  item.appendChild(box);
+
+  if (hasKids) {
+    const col = document.createElement("div");
+    col.className = "branch-col";
+    col.id = "col-" + Math.random().toString(36).slice(2);
+    node.children.forEach(c => col.appendChild(renderNode(c, depth + 1)));
+    item.appendChild(col);
+    box.addEventListener("click", () => {
+      col.classList.toggle("hidden");
+      box.querySelector(".arrow").textContent = col.classList.contains("hidden") ? "▶" : "▼";
+    });
+  }
+  return item;
+}
+
+const rootCol = document.createElement("div");
+rootCol.className = "branch-col";
+TREE.children.forEach(c => rootCol.appendChild(renderNode(c, 1)));
+const rootEl = document.createElement("div");
+rootEl.className = "branch";
+const rootBox = document.createElement("div");
+rootBox.className = "root";
+rootBox.textContent = "🧭 " + TREE.label;
+rootEl.appendChild(rootBox);
+rootEl.appendChild(rootCol);
+mm.appendChild(rootEl);
+</script>
+</body>
+</html>
