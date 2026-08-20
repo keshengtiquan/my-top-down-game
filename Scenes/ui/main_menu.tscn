@@ -8,6 +8,10 @@
 [ext_resource type="LabelSettings" uid="uid://pkbbbgyce87" path="res://Extra/font_16.tres" id="6_6gvf8"]
 [ext_resource type="AudioStream" uid="uid://dtxhputnlac6" path="res://Sounds/select-a.ogg" id="7_iug37"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_iug37"]
+atlas = ExtResource("5_iug37")
+region = Rect2(80, 65, 15.83931, 14)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfe6c"]
 shader = ExtResource("2_baxwh")
 shader_parameter/speed = 0.5
@@ -28,6 +32,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c2fhx")
+menu_cursor = SubResource("AtlasTexture_iug37")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1138514194]
 material = SubResource("ShaderMaterial_nfe6c")

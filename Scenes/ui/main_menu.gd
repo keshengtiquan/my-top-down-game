@@ -2,6 +2,7 @@ extends Control
 
 class_name MainMenu
 
+@export var menu_cursor: Texture2D
 @onready var main_buttons: Control = $MainButtons
 @onready var settings_buttons: Control = $SettingsButtons
 @onready var ui_sound: AudioStreamPlayer = $UISound
@@ -12,6 +13,7 @@ class_name MainMenu
 
 func _ready() -> void:
 	Global.load_data()
+	Cursor.sprite.texture = menu_cursor
 	print(Global.settings)
 	update_audio_bus('Music', music_label, Global.settings.music)
 	update_audio_bus('SFX', sfx_label, Global.settings.sfx)
@@ -23,7 +25,8 @@ func update_audio_bus(bus_name: String, label: Label, is_on: bool) -> void:
 
 func _on_play_button_pressed() -> void:
 	ui_sound.play()
-	Transition.transition_to("res://Scenes/character_selection.tscn")
+	#Transition.transition_to("res://Scenes/character_selection.tscn")
+	Transition.transition_to("res://Scenes/Arena/arena.tscn")
 
 func update_fullscreen(is_on: bool) -> void:
 	var mode = DisplayServer.WINDOW_MODE_FULLSCREEN if is_on else DisplayServer.WINDOW_MODE_WINDOWED
