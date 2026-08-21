@@ -1,14 +1,10 @@
 extends Node2D
 
 class_name WeaponController
-@onready var weapon_range_pistol: WeaponRange = $WeaponRangePistol
  
 
 var current_weapon: Weapon
 var target_pos: Vector2
-
-func _ready() -> void:
-	current_weapon = weapon_range_pistol
 
 
 func _process(delta: float) -> void:

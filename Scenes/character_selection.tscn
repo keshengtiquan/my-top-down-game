@@ -1,5 +1,39 @@
 [gd_scene format=3 uid="uid://cjnmg5vfvg286"]
 
+[ext_resource type="PackedScene" uid="uid://ufnio80gaq0w" path="res://Scenes/ui/background.tscn" id="1_235bc"]
+[ext_resource type="Script" uid="uid://thir2y5pxbb3" path="res://Scenes/character_selection.gd" id="1_ov5p2"]
+[ext_resource type="Script" uid="uid://usdod6vvdd36" path="res://Data/player/play_data.gd" id="2_6qipo"]
+[ext_resource type="LabelSettings" uid="uid://dkmipvd7j8own" path="res://Extra/font_48.tres" id="2_mdkri"]
+[ext_resource type="Resource" uid="uid://chbg63p1n0hwi" path="res://Data/player/player_cat.tres" id="3_0d3xi"]
+[ext_resource type="PackedScene" uid="uid://cvdk6j6wd7iu6" path="res://Scenes/ui/PlayerCard/player_card.tscn" id="3_3nbr6"]
+[ext_resource type="Resource" uid="uid://syss28hljkn4" path="res://Data/player/player_mouse.tres" id="4_awt4j"]
+[ext_resource type="PackedScene" uid="uid://s7kuav7o0ek8" path="res://Scenes/ui/WeaponCard/weapon_card.tscn" id="4_mdkri"]
+[ext_resource type="Resource" uid="uid://ctmo8j1fugt0f" path="res://Data/player/player_bunny.tres" id="5_a2e1g"]
+[ext_resource type="Texture2D" uid="uid://dy8e3xkc5qdbp" path="res://Sprites/Interface/Tilemap/tilemap_packed.png" id="5_btth6"]
+[ext_resource type="Resource" uid="uid://ylyihdne1tat" path="res://Data/player/player_dog.tres" id="6_5ow1g"]
+[ext_resource type="LabelSettings" uid="uid://pkbbbgyce87" path="res://Extra/font_16.tres" id="6_ov5p2"]
+[ext_resource type="Script" uid="uid://dq8305xtxjt73" path="res://Data/Weapons/weapon_data.gd" id="7_acrdh"]
+[ext_resource type="Resource" uid="uid://cfll2g1s17ifh" path="res://Data/Weapons/weapon_mp5.tres" id="8_2bdlp"]
+[ext_resource type="Resource" uid="uid://dihkxdo4xyvqf" path="res://Data/Weapons/weapon_uzi.tres" id="9_0ssgb"]
+[ext_resource type="Resource" uid="uid://bhsf7ntle6qbo" path="res://Data/Weapons/weapon_ak47.tres" id="10_ph7n8"]
+[ext_resource type="Resource" uid="uid://bp0dvfxatit8k" path="res://Data/Weapons/weapon_mac10.tres" id="11_dnapa"]
+[ext_resource type="Resource" uid="uid://cq2xsijows2xk" path="res://Data/Weapons/weapon_pistol.tres" id="12_h5r8v"]
+[ext_resource type="Resource" uid="uid://wxqioohdb16p" path="res://Data/Weapons/weapon_sniper.tres" id="13_2u2re"]
+[ext_resource type="Resource" uid="uid://brsdlxr1pvfq4" path="res://Data/Weapons/weapon_shotgun.tres" id="14_v0cmq"]
+[ext_resource type="AudioStream" uid="uid://dtxhputnlac6" path="res://Sounds/select-a.ogg" id="21_2bdlp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acrdh"]
+atlas = ExtResource("5_btth6")
+region = Rect2(80, 65, 15, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdkri"]
+atlas = ExtResource("5_btth6")
+region = Rect2(112, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u424w"]
+atlas = ExtResource("5_btth6")
+region = Rect2(176, 48, 48, 16)
+
 [node name="CharacterSelection" type="Control" unique_id=2135366437]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +41,159 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ov5p2")
+selection_cursor = SubResource("AtlasTexture_acrdh")
+players = Array[ExtResource("2_6qipo")]([ExtResource("3_0d3xi"), ExtResource("4_awt4j"), ExtResource("5_a2e1g"), ExtResource("6_5ow1g")])
+weapons = Array[ExtResource("7_acrdh")]([ExtResource("8_2bdlp"), ExtResource("9_0ssgb"), ExtResource("10_ph7n8"), ExtResource("11_dnapa"), ExtResource("12_h5r8v"), ExtResource("13_2u2re"), ExtResource("14_v0cmq")])
+
+[node name="Background" parent="." unique_id=101324864 instance=ExtResource("1_235bc")]
+layout_mode = 1
+
+[node name="Title" type="Label" parent="." unique_id=863175235]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -241.5
+offset_top = 10.0
+offset_right = 241.5
+offset_bottom = 58.0
+grow_horizontal = 2
+text = "CHARACTERSELECTION"
+label_settings = ExtResource("2_mdkri")
+
+[node name="PlayerContainer" type="HBoxContainer" parent="." unique_id=800029531]
+custom_minimum_size = Vector2(450, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -90.0
+offset_right = 225.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayerCard" parent="PlayerContainer" unique_id=1432539196 instance=ExtResource("3_3nbr6")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="PlayerCard2" parent="PlayerContainer" unique_id=882532572 instance=ExtResource("3_3nbr6")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="PlayerCard3" parent="PlayerContainer" unique_id=31706385 instance=ExtResource("3_3nbr6")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="PlayerCard4" parent="PlayerContainer" unique_id=1546110202 instance=ExtResource("3_3nbr6")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="WeaponContainer" type="HBoxContainer" parent="." unique_id=366414847]
+custom_minimum_size = Vector2(450, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_right = 225.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="WeaponCard" parent="WeaponContainer" unique_id=422294529 instance=ExtResource("4_mdkri")]
+layout_mode = 2
+
+[node name="WeaponCard2" parent="WeaponContainer" unique_id=2006572055 instance=ExtResource("4_mdkri")]
+layout_mode = 2
+
+[node name="WeaponCard3" parent="WeaponContainer" unique_id=1950926888 instance=ExtResource("4_mdkri")]
+layout_mode = 2
+
+[node name="WeaponCard4" parent="WeaponContainer" unique_id=739869390 instance=ExtResource("4_mdkri")]
+layout_mode = 2
+
+[node name="WeaponCard5" parent="WeaponContainer" unique_id=842821649 instance=ExtResource("4_mdkri")]
+layout_mode = 2
+
+[node name="WeaponCard6" parent="WeaponContainer" unique_id=1505834674 instance=ExtResource("4_mdkri")]
+layout_mode = 2
+
+[node name="WeaponCard7" parent="WeaponContainer" unique_id=443112078 instance=ExtResource("4_mdkri")]
+layout_mode = 2
+
+[node name="Buttons" type="Control" parent="." unique_id=1512278461]
+custom_minimum_size = Vector2(350, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -70.0
+offset_right = 20.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayButton" type="TextureButton" parent="Buttons" unique_id=2128420697]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 5.0
+offset_right = 155.0
+offset_bottom = 65.0
+texture_normal = SubResource("AtlasTexture_mdkri")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Buttons/PlayButton" unique_id=535743340]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+label_settings = ExtResource("6_ov5p2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="Buttons" unique_id=1308122749]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 0
+offset_left = 196.0
+offset_top = 5.0
+offset_right = 316.0
+offset_bottom = 65.0
+texture_normal = SubResource("AtlasTexture_u424w")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Buttons/BackButton" unique_id=1020791542]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BACK"
+label_settings = ExtResource("6_ov5p2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UISound" type="AudioStreamPlayer" parent="." unique_id=123890126]
+stream = ExtResource("21_2bdlp")
+bus = &"SFX"
+
+[connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Buttons/BackButton" to="." method="_on_back_button_pressed"]

@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bvr7in7eey6cb" path="res://Sprites/Interface/bar_over.png" id="5_xt8pn"]
 [ext_resource type="Texture2D" uid="uid://cf2ypr83psjfm" path="res://Sprites/Interface/bar_health.png" id="6_pa1tb"]
 [ext_resource type="Texture2D" uid="uid://djtqrhxpxpjeg" path="res://Sprites/Interface/bar_mana.png" id="7_nmnh2"]
-[ext_resource type="PackedScene" uid="uid://bw4jywptniu8h" path="res://Scenes/player/player_dog.tscn" id="8_fsjwy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rths"]
 atlas = ExtResource("2_fsjwy")
@@ -86,6 +85,3 @@ stretch_margin_right = 3
 texture_under = ExtResource("4_vgwd8")
 texture_over = ExtResource("5_xt8pn")
 texture_progress = ExtResource("7_nmnh2")
-
-[node name="PlayerDog" parent="UI" unique_id=270589837 instance=ExtResource("8_fsjwy")]
-position = Vector2(153, 69)

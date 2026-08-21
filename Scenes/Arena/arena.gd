@@ -7,7 +7,11 @@ class_name Arena
 func _ready() -> void:
 	Cursor.sprite.texture = arena_cursor
 	EventBus.on_player_health_update.connect(_on_player_health_update)
+	load_game_selected()
 	
 func _on_player_health_update(current: float, max: float) ->void:
 	health_bar.value = current / max
-	
+
+func load_game_selected() -> void:
+	var player = Global.get_player().instantiate()
+	add_child(player)

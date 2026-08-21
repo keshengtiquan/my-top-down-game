@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://ctq8h0cdparas"]
 
 [ext_resource type="Script" uid="uid://qxq7ertdjpuh" path="res://Scenes/ui/main_menu.gd" id="1_c2fhx"]
-[ext_resource type="Shader" uid="uid://cjryqyn2dwvyy" path="res://Shaders/background.gdshader" id="2_baxwh"]
-[ext_resource type="Texture2D" uid="uid://bjnh3sonwurje" path="res://Sprites/background_tiled.png" id="3_1u1h3"]
+[ext_resource type="PackedScene" uid="uid://ufnio80gaq0w" path="res://Scenes/ui/background.tscn" id="3_0js1b"]
 [ext_resource type="LabelSettings" uid="uid://dkmipvd7j8own" path="res://Extra/font_48.tres" id="4_0js1b"]
 [ext_resource type="Texture2D" uid="uid://dy8e3xkc5qdbp" path="res://Sprites/Interface/Tilemap/tilemap_packed.png" id="5_iug37"]
 [ext_resource type="LabelSettings" uid="uid://pkbbbgyce87" path="res://Extra/font_16.tres" id="6_6gvf8"]
@@ -11,10 +10,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_iug37"]
 atlas = ExtResource("5_iug37")
 region = Rect2(80, 65, 15.83931, 14)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfe6c"]
-shader = ExtResource("2_baxwh")
-shader_parameter/speed = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rths"]
 atlas = ExtResource("5_iug37")
@@ -34,16 +29,8 @@ grow_vertical = 2
 script = ExtResource("1_c2fhx")
 menu_cursor = SubResource("AtlasTexture_iug37")
 
-[node name="Background" type="TextureRect" parent="." unique_id=1138514194]
-material = SubResource("ShaderMaterial_nfe6c")
+[node name="Background" parent="." unique_id=101324864 instance=ExtResource("3_0js1b")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_1u1h3")
-stretch_mode = 1
 
 [node name="Title" type="Label" parent="." unique_id=2143208209]
 layout_mode = 1
@@ -359,6 +346,7 @@ autowrap_trim_flags = 128
 
 [node name="UISound" type="AudioStreamPlayer" parent="." unique_id=1784597953]
 stream = ExtResource("7_iug37")
+bus = &"SFX"
 
 [connection signal="pressed" from="MainButtons/VBoxContainer/Play/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Settings/SettingsButton" to="." method="_on_settings_button_pressed"]

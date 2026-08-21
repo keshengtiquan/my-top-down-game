@@ -25,8 +25,7 @@ func update_audio_bus(bus_name: String, label: Label, is_on: bool) -> void:
 
 func _on_play_button_pressed() -> void:
 	ui_sound.play()
-	#Transition.transition_to("res://Scenes/character_selection.tscn")
-	Transition.transition_to("res://Scenes/Arena/arena.tscn")
+	Transition.transition_to("res://Scenes/character_selection.tscn")
 
 func update_fullscreen(is_on: bool) -> void:
 	var mode = DisplayServer.WINDOW_MODE_FULLSCREEN if is_on else DisplayServer.WINDOW_MODE_WINDOWED
