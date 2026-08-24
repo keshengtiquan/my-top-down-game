@@ -8,10 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://bvr7in7eey6cb" path="res://Sprites/Interface/bar_over.png" id="5_xt8pn"]
 [ext_resource type="Texture2D" uid="uid://cf2ypr83psjfm" path="res://Sprites/Interface/bar_health.png" id="6_pa1tb"]
 [ext_resource type="Texture2D" uid="uid://djtqrhxpxpjeg" path="res://Sprites/Interface/bar_mana.png" id="7_nmnh2"]
+[ext_resource type="Texture2D" uid="uid://clv0dnuyxhqg8" path="res://Sprites/Interface/Button_Blue.png" id="9_0ibrr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rths"]
 atlas = ExtResource("2_fsjwy")
 region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rths"]
+size = Vector2(115, 104)
 
 [node name="Arena" type="Node2D" unique_id=1562130673]
 script = ExtResource("1_qnyor")
@@ -85,3 +89,30 @@ stretch_margin_right = 3
 texture_under = ExtResource("4_vgwd8")
 texture_over = ExtResource("5_xt8pn")
 texture_progress = ExtResource("7_nmnh2")
+
+[node name="EmenyBody" type="StaticBody2D" parent="." unique_id=2084275782]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="EmenyBody" unique_id=1628318986]
+position = Vector2(220, 91.5)
+scale = Vector2(2.4583333, 2.3125)
+texture = ExtResource("9_0ibrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EmenyBody" unique_id=1240729256]
+position = Vector2(220.5, 90)
+shape = SubResource("RectangleShape2D_2rths")
+
+[node name="EmenyBody2" type="StaticBody2D" parent="." unique_id=1012201190]
+position = Vector2(-6, 68)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="EmenyBody2" unique_id=1729955256]
+position = Vector2(151, 151)
+scale = Vector2(1.625, 1.5833334)
+texture = ExtResource("9_0ibrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EmenyBody2" unique_id=2133177547]
+position = Vector2(152, 153)
+shape = SubResource("RectangleShape2D_2rths")

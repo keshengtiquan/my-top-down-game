@@ -1,12 +1,16 @@
 extends Node
 
 var save_path = 'user://save.json'
+const EXPLOSION_EFFECT_SCENE = preload("uid://bexbkifsv7d80")
+const DAMAGE_TEXT_SCENE = preload("uid://cvnxkoqod0ibi")
 
 var settings: Dictionary = {
 	"music": false,
 	"sfx": true,
 	"fullscreen": false
 }
+
+
 
 var all_player: Dictionary[String, PackedScene] ={
 	"Bunny":  preload("uid://cmdseuqt21ygd"),
@@ -22,7 +26,9 @@ var all_weapons: Dictionary[String, PackedScene] = {
 	"Pistol": preload("uid://d1l2oaro5petc"),
 	"Shotgun": preload("uid://c2oe17ju3j2nr"),
 	"Sniper": preload("uid://ktirn1vydynj"),
-	"Uzi": preload("uid://dwtb4xxdpdgnv")
+	"Uzi": preload("uid://dwtb4xxdpdgnv"),
+	"Sword": preload("uid://drwrspwat1dbb"),
+	"Axe": preload("uid://cpp0gt7qyvgm6")
 }
 
 var selected_player: PlayerData
@@ -36,6 +42,18 @@ func get_player() -> PackedScene:
 
 func get_weapon() -> PackedScene:
 	return all_weapons[selected_weapon.weapon_name]
+
+func create_explosion(pos: Vector2) -> void:
+	var explosion: Node2D = EXPLOSION_EFFECT_SCENE.instantiate()
+	explosion.global_position = pos
+	get_tree().root.add_child(explosion)
+
+func create_damage(value: float, pos: Vector2) -> void:
+	var damage: DamageText = DAMAGE_TEXT_SCENE.instantiate()
+	get_tree().root.add_child(damage)
+	var rand_pos = randf_range(0, TAU)
+	damage.global_position = pos + Vector2.RIGHT.rotated(rand_pos) * 20
+	damage.setup(value)
 
 func save_data() -> void:
 	var save = settings.duplicate()

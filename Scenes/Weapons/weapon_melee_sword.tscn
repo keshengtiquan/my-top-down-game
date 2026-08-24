@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://drwrspwat1dbb"]
+
+[ext_resource type="Script" uid="uid://brrjflhp5g535" path="res://Scenes/Weapons/weapon_melee.gd" id="1_3deux"]
+[ext_resource type="Texture2D" uid="uid://ddl1y3k5qm3mu" path="res://Sprites/Weapons/Tiles/tile_0008.png" id="1_etoe1"]
+[ext_resource type="Resource" uid="uid://8cm407upbv7s" path="res://Data/Weapons/weapon_sword.tres" id="2_p3ppw"]
+[ext_resource type="AudioStream" uid="uid://bpphir6sj7acr" path="res://Sounds/slash.ogg" id="4_sfmxr"]
+[ext_resource type="Texture2D" uid="uid://d2akrrxsegdf4" path="res://Sprites/Weapons/swordslash.png" id="4_v12py"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rths"]
+size = Vector2(30, 40)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4wm0m"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_piikj"]
+particle_flag_disable_z = true
+spread = 0.0
+initial_velocity_min = 350.0
+initial_velocity_max = 350.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="Animation" id="Animation_p3ppw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3deux"]
+resource_name = "idle"
+length = 0.19999999999999998
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sfmxr"]
+resource_name = "slash"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.2217304763960306, 1.5707963267948966, 2.6179938779914944]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -10), Vector2(10, 0), Vector2(5, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v12py"]
+_data = {
+&"RESET": SubResource("Animation_p3ppw"),
+&"idle": SubResource("Animation_3deux"),
+&"slash": SubResource("Animation_sfmxr")
+}
+
+[node name="WeaponMeleeSword" type="Node2D" unique_id=476714646]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_3deux")
+data = ExtResource("2_p3ppw")
+
+[node name="Pivot" type="Node2D" parent="." unique_id=995293344]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=1785477014]
+unique_name_in_owner = true
+texture = ExtResource("1_etoe1")
+
+[node name="HitBox" type="Area2D" parent="Pivot" unique_id=651337123]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/HitBox" unique_id=82473186]
+position = Vector2(15.333334, 0)
+shape = SubResource("RectangleShape2D_2rths")
+
+[node name="SlashParticle" type="GPUParticles2D" parent="Pivot" unique_id=1187831022]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_4wm0m")
+position = Vector2(22, 0)
+emitting = false
+amount = 1
+texture = ExtResource("4_v12py")
+lifetime = 0.09999999999999999
+one_shot = true
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_piikj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1157606025]
+libraries/ = SubResource("AnimationLibrary_v12py")
+autoplay = &"idle"
+
+[node name="SlashSound" type="AudioStreamPlayer" parent="." unique_id=1757850566]
+stream = ExtResource("4_sfmxr")
+bus = &"SFX"
+
+[node name="Cooldown" type="Timer" parent="." unique_id=74775808]
+
+[connection signal="body_entered" from="Pivot/HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="Pivot/HitBox" to="." method="_on_hit_box_body_exited"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

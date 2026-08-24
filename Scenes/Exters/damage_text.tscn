@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cvnxkoqod0ibi"]
+
+[ext_resource type="LabelSettings" uid="uid://pkbbbgyce87" path="res://Extra/font_16.tres" id="1_6ido6"]
+[ext_resource type="Script" uid="uid://ejn01kgbijyp" path="res://Scenes/Exters/damage_text.gd" id="1_w1f53"]
+
+[node name="DamageText" type="Control" unique_id=1109956559]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = -620.0
+offset_bottom = -340.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w1f53")
+
+[node name="Label" type="Label" parent="." unique_id=1293858420]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10"
+label_settings = ExtResource("1_6ido6")
+horizontal_alignment = 1
+vertical_alignment = 1

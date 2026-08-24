@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bm1o3aeh7x8fl"]
+
+[ext_resource type="PackedScene" uid="uid://b2n0ep6rfpy12" path="res://Scenes/Bullets/bullet_pistol.tscn" id="1_tc1v8"]
+[ext_resource type="Texture2D" uid="uid://62erre4aea2m" path="res://Sprites/Weapons/All_Fire_Bullet_Pixel_16x16_00.png" id="2_gs7dv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc4eu"]
+atlas = ExtResource("2_gs7dv")
+region = Rect2(496, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8dub"]
+atlas = ExtResource("2_gs7dv")
+region = Rect2(512, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5rim"]
+atlas = ExtResource("2_gs7dv")
+region = Rect2(528, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpctq"]
+atlas = ExtResource("2_gs7dv")
+region = Rect2(544, 160, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_shr6m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc4eu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8dub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5rim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpctq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="BulletSniper" unique_id=1126704131 instance=ExtResource("1_tc1v8")]
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1764774522]
+sprite_frames = SubResource("SpriteFrames_shr6m")
+frame = 1
+frame_progress = 0.104132675
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1072493016]
+position = Vector2(0, 0)
