@@ -9,10 +9,11 @@ class_name MainMenu
 @onready var music_label: Label = %MusicLabel
 @onready var sfx_label: Label = %SFXLabel
 @onready var window_label: Label = %WindowLabel
+@onready var hover_sound: AudioStreamPlayer = $HoverSound
 
 
 func _ready() -> void:
-	Global.load_data()
+	
 	Cursor.sprite.texture = menu_cursor
 	print(Global.settings)
 	update_audio_bus('Music', music_label, Global.settings.music)
@@ -70,6 +71,9 @@ func _on_back_button_pressed() -> void:
 	tween.tween_property(settings_buttons, "global_position:x", 656, 0.3)
 	tween.tween_interval(0.1)
 	tween.tween_property(main_buttons, 'global_position:y', 107, 0.2)
+
+func _on_button_mouse_entered() -> void:
+	hover_sound.play()
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

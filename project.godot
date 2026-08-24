@@ -26,6 +26,7 @@ Global="*uid://cxy2q1u22ma63"
 Music="*uid://culbwkj5afiog"
 EventBus="*uid://dt33h0d0vbo83"
 Cursor="*uid://cg6f3hj0ylar3"
+DampedOscillator="*uid://bkqabubjo4g5a"
 
 [display]
 
@@ -35,6 +36,10 @@ window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/DampedOscillator/plugin.cfg")
 
 [input]
 

@@ -7,9 +7,9 @@
 script = ExtResource("2_qoq3b")
 icon = ExtResource("1_kvlyx")
 weapon_name = "Mp5"
-damage = 1.0
-cooldown = 0.4
-mana_cost = 1.0
-spread = 7.0
-bullet_speed = 250.0
+damage = 1.2
+cooldown = 0.22
+mana_cost = 0.8
+spread = 5.0
+bullet_speed = 280.0
 metadata/_custom_type_script = "uid://dq8305xtxjt73"

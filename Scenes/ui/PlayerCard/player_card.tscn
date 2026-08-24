@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://clv0dnuyxhqg8" path="res://Sprites/Interface/Button_Blue.png" id="1_f4yjp"]
 [ext_resource type="Script" uid="uid://cs255e0s7nud8" path="res://Scenes/ui/PlayerCard/player_card.gd" id="2_a4jcn"]
 [ext_resource type="Texture2D" uid="uid://ccab6or5n1nai" path="res://Sprites/Players/tile_0000.png" id="2_eiq4w"]
+[ext_resource type="AudioStream" uid="uid://dlyw3ke5ldgn7" path="res://Sounds/button_hover.wav" id="4_a4jcn"]
+[ext_resource type="Texture2D" uid="uid://btvvlw1s6noca" path="res://Sprites/Interface/Selector.png" id="4_uegig"]
+[ext_resource type="PackedScene" uid="uid://bll0b0pjkavk4" path="res://Scenes/ui/description_panel.tscn" id="6_vjlow"]
 
 [node name="PlayerCard" type="TextureButton" unique_id=1432539196]
 custom_minimum_size = Vector2(60, 60)
@@ -24,7 +27,40 @@ offset_right = 20.0
 offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("2_eiq4w")
 
+[node name="Selector" type="TextureRect" parent="." unique_id=1183370356]
+visible = false
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_uegig")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=1810131499]
+stream = ExtResource("4_a4jcn")
+bus = &"SFX"
+
+[node name="DescriptionPanel" parent="." unique_id=1201188939 instance=ExtResource("6_vjlow")]
+visible = false
+layout_mode = 1
+offset_left = -69.0
+offset_top = -101.0
+offset_right = 71.0
+offset_bottom = -61.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
