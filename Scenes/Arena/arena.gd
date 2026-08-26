@@ -4,6 +4,10 @@ class_name Arena
 @onready var mana_bar: TextureProgressBar = %ManaBar
 @export var arena_cursor: Texture2D
 
+var grid: Dictionary[Vector2i, LevelRoom] = {}
+
+
+
 func _ready() -> void:
 	Cursor.sprite.texture = arena_cursor
 	EventBus.on_player_health_update.connect(_on_player_health_update)
